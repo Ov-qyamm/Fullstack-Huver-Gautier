@@ -1,0 +1,59 @@
+<p></p>
+
+<button (click)="RetourListeRestaurant()">Retour Liste Restaurants</button>
+
+<p>Detail du restaurant : </p>
+<table>
+    <tr>
+      <th>Id</th>
+      <th>Nom</th>
+      <th>Adresse</th>
+      <th>Id evaluation</th>
+      <th>Pseudo</th>
+      <th>Commentaires</th>
+      <th>Note</th>
+      <th></th>
+    </tr>
+    <tr *ngIf="restaurant">
+      <td>
+        {{restaurant.id}}
+      </td>
+      <td>
+        {{restaurant.titre}}
+      </td>
+      <td>
+        {{restaurant.adresse}}
+      </td>
+      <td>
+        <div *ngFor="let evaluation of restaurant.evaluations">
+          {{evaluation.id}}
+        </div>   
+      </td>
+      <td>  
+        <div *ngFor="let evaluation of restaurant.evaluations">
+          {{evaluation.pseudo}}
+        </div>   
+      </td>
+      <td>  
+        <div *ngFor="let evaluation of restaurant.evaluations">
+          {{evaluation.texte}}
+        </div>
+      </td>
+      <td>
+        <div *ngFor="let evaluation of restaurant.evaluations">
+          {{evaluation.note}}/3 
+        </div>
+      </td>
+      <td>
+        <div *ngFor="let evaluation of restaurant.evaluations">
+          <button (click)="SupprimerEvaluation(restaurant.id, evaluation.id)">Supprimer evaluation</button>
+        </div>
+      </td>
+    </tr>
+  </table>
+  <div *ngIf="restaurant">
+    <app-add-evaluation-form (evaluationSubmitted)="onEvaluationSubmitted(restaurant.id,$event)"></app-add-evaluation-form>
+  </div>    
+  <div *ngIf="restaurant">
+    <app-edit-restaurant-form (restaurantEditSubmitted)="onRestaurantEditSubmitted(restaurant.id,$event)"></app-edit-restaurant-form>
+  </div>

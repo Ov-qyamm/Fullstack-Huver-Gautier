@@ -1,0 +1,11 @@
+<p>Rechercher un restaurant :</p>
+<form #researchRestaurantForm="ngForm" (ngSubmit)="submit(researchRestaurantForm)">
+    <div>
+      Nom: <input #titre="ngModel" type="text" name="titre" [(ngModel)]="formData.titre" [maxlength]="90" [required]="true"/>
+      <span *ngIf="titre.dirty && titre.errors?.['required']" appErrorDirective>Taille max 90 caracteres</span><br>
+    </div>
+    <div>
+      <button type="submit">Rechercher</button>
+    </div>
+  </form>
+  

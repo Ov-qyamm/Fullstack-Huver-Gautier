@@ -1,0 +1,35 @@
+<p>Tableau des restaurants : </p>
+<table>
+    <tr>
+      <th>Id</th>
+      <th>Nom</th>
+      <th>Adresse</th>
+      <th>Moyenne</th>
+      <th>Note finale</th>
+      <th></th>
+    </tr>
+    <tr *ngFor="let restaurant of restaurants" appColorRestaurant="{{restaurant.moyenne}}">
+      <td>
+        {{restaurant.id}}
+      </td>
+      <td>
+        {{restaurant.titre}}
+      </td>
+      <td>
+        {{restaurant.adresse}}
+      </td>
+      <td *ngIf="restaurant.moyenne != -1">{{restaurant.moyenne}}</td>
+      <td *ngIf="restaurant.moyenne === -1">/</td>
+      <td>
+      </td>
+      <td>
+        <div>
+          {{restaurant.evaluationFinale.noteFinale}}/3
+        </div>  
+      </td>
+      <td>
+        <button (click)="DetailRestaurant(restaurant)">Detail</button>
+      </td>
+    </tr>
+  </table>
+  

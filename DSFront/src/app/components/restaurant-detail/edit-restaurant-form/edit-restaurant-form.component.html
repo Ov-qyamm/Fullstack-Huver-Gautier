@@ -1,0 +1,12 @@
+<p>Editer le restaurant :</p>
+<form #editRestaurantForm="ngForm" (ngSubmit)="submit(editRestaurantForm)">
+    <div>
+      Nom: <input #titre="ngModel" type="text" name="titre" [(ngModel)]="formData.titre" [maxlength]="90" [required]="true"/>
+      <span *ngIf="titre.dirty && titre.errors?.['required']" appErrorDirective>Taille max 90 caracteres</span><br>
+      Adresse: <input #adresse="ngModel" type="text" name="adresse" [(ngModel)]="formData.adresse" [maxlength]="255" [required]="true"/>
+      <span *ngIf="adresse.dirty && adresse.errors?.['required']" appErrorDirective>Taille max 255 caracteres</span>
+    </div>
+    <div>
+      <button type="submit">Submit</button>
+    </div>
+  </form>
